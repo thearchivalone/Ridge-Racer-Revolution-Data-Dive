@@ -1,0 +1,22 @@
+See attached LICENSE file for distribution and copyright information.
+
+---
+
+The addresses listed below contain important values for those who want to make extraction scripts, parsers, or mods. These are also from observations but may not be exactly what I assumed they are. These are all mostly relevant to the CARS_.DAT files (which are what the RIDGE.EXE calls before extracting the TMD model files).
+
+0x00 - 0x18 - all offsets to either data tables or padding
+
+---
+
+CAR.RSO seems to possibly be a shared construct between all of the cars. Its data follows the same structure as the some of the data tables linked above, so it may be a good source for figuring the full TMD file format structure used.
+
+---
+
+Data Tables that are probably a list of offsets to TMD OBJ TABLES:
+
+0x00 - Length of the list in 4-byte sections with an offset of 0x04 (this first line doesn't count) - Math: value of this address * 4 + 0x04 + this value's address will take you to the end of the list
+0x04 - end of list - the offset values; if these were the OBJ TABLEs, each chunk would have 7 4-byte values and the lists aren't of the right size for them
+
+---
+
+TMD header information hasn't been found yet but if Namco did start experimenting PSY-Q for this project, the version possibly could be a much older, experimental release.
